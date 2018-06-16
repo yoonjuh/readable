@@ -1,0 +1,14 @@
+{
+  "name": "readable",
+  "version": "1.0.0",
+  "description": "edwin's first full-stack application",
+  "main": "index.js",
+  "repository": "https://github.com/EdwinYoon/readable.git",
+  "author": "edwinyoon <ep160101@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.5"
+  }
+}
