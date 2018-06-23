@@ -1,32 +1,34 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { mongoose } = require('../db/mongoose');
-const { Post } = require('./model/posts');
+const express = require("express");
+const bodyParser = require("body-parser");
+const { mongoose } = require("../db/mongoose");
+const { Post } = require("./model/posts");
+
+const PORT = 3001;
 
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello World!!');
+app.get("/", (req, res) => {
+  res.send("Hello World!!");
 });
 
-app.post('/post', (req, res) => {
+app.post("/newpost", (req, res) => {
   const post = new Post(req.body);
   post.save().then(
-    (newPost) => {
+    newPost => {
       res.send(newPost);
     },
-    e => res.status(400).send(e),
+    e => res.status(400).send(e)
   );
 });
 
-app.get('/:category/react', (req, res) => {
-  res.send('React Category');
+app.get("/:category/react", (req, res) => {
+  res.send("React Category");
 });
-app.get('/:category/redux', (req, res) => {
+app.get("/:category/redux", (req, res) => {
   res.send(`${req.params.category}`);
 });
 
-app.listen(3000, () => console.log('Express is running on port 3000!!'));
+app.listen(PORT, () => console.log(`Express is running on port ${PORT}!!`));
 
 module.exports = { app };
