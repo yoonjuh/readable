@@ -5,8 +5,8 @@ import reducers from "./reducers";
 
 const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
-
 middlewares.push(sagaMiddleware);
+
 const store = createStore(reducers, applyMiddleware(...middlewares));
 sagaMiddleware.run(rootSaga);
 
