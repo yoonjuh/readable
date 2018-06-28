@@ -1,17 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import "./Header.css";
 
 const Header = () => (
-  <div>
-    ...HEADER
-    <Link to="/">All</Link>
-    <Link to="/React">React</Link>
-    <Link to="/Redux">Redux</Link>
-    <Link to="/Saga">Saga</Link>
-    <div>
-      <button>New Post</button>
-    </div>
-    <div>Sort by</div>
-  </div>
+  <StyledDiv>
+    <Link to="/">Readable</Link>
+  </StyledDiv>
 );
 export default Header;
+
+const StyledDiv = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: center;
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 3rem;
+  }
+`;
