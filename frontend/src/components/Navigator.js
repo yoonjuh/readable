@@ -7,7 +7,7 @@ export default props => {
   return (
     <StyledDiv>
       {props.categories.map(category => (
-        <div className="link-wrapper">
+        <div className="link-wrapper" key={category}>
           <Link key={category} to={`/${category}`}>
             {category.toUpperCase()}
           </Link>
