@@ -1,0 +1,34 @@
+:root {
+  /* Variable Section */
+
+  --color-primary: #464646;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  line-height: 1.6;
+}
+body {
+  background-color: #464646;
+  background-size: cover;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 5rem;
+  color: #eee;
+  flex: 1;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  min-height: 50rem;
+}
