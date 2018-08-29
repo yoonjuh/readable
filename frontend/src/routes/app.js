@@ -1,19 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "../components/Header";
-import PostForm from "../components/PostForm";
-import SortingToggler from "./SortingToggler";
-import "./app.css";
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import PostByCategory from '../components/PostByCategory'
 
 export default () => (
+  <div>
     <Router>
-      <div className="main-container">
-        <Header />
-        <Switch>
-          <Route exact path="/" component={SortingToggler} />
-          <Route exact path="/new" component={PostForm} />
-          <Route exact path="/:category" component={SortingToggler} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path={'/'} component={PostByCategory}/>
+      </Switch>
     </Router>
-  );
+  </div>
+  )
