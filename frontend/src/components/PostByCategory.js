@@ -5,7 +5,7 @@ const categories = ['All', 'React', 'Graphql']
 
 class PostByCategory extends Component {
   state = {
-    currentCategory: '',
+    currentCategory: 'All',
   }
   categoryToggler = newCategory => {
     this.setState({ currentCategory: newCategory })
@@ -14,7 +14,11 @@ class PostByCategory extends Component {
     console.log(this.state.currentCategory)
     return (
       <div>
-        <CategoryNavigator categories={categories} categoryToggler={this.categoryToggler} />
+        <CategoryNavigator
+          categories={categories}
+          currentCategory={this.state.currentCategory}
+          categoryToggler={this.categoryToggler}
+        />
       </div>
     )
   }
