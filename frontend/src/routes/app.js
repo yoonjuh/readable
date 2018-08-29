@@ -6,8 +6,8 @@ export default () => (
   <div>
     <Router>
       <Switch>
-        <Route path={'/'} component={PostByCategory}/>
+        <Route path="/" render={() => <PostByCategory />} />
       </Switch>
     </Router>
   </div>
-  )
+)
