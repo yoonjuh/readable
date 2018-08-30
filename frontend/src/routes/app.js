@@ -3,24 +3,28 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import PostByCategory from '../components/PostByCategory'
 import './app.css'
+import Header from '../components/Header'
 
 const App = () => (
-  <AppContainer>
-    <Router>
-      <Switch>
-        <Route path="/" render={() => <PostByCategory />} />
-      </Switch>
-    </Router>
-  </AppContainer>
+  <Router>
+    <div>
+      <Header />
+      <AppContainer>
+        <Switch>
+          <Route exact path="/" render={() => <PostByCategory />} />
+          <Route exact path="/about" render={() => <div>{'about'}</div>} />
+        </Switch>
+      </AppContainer>
+    </div>
+  </Router>
 )
 
 export default App
 
 const AppContainer = styled.div`
-  border: 0.5rem red solid;
+  border: 0.5rem green solid;
   background-color: #eee;
   display: flex;
-  height: 100%;
   flex: 1;
   flex-direction: column;
   align-items: center;
