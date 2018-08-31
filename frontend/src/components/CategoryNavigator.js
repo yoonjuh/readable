@@ -21,12 +21,13 @@ const CategoryNavigator = ({ categories, currentCategory, categoryToggler }) => 
 export default CategoryNavigator
 
 const NaviStyleProvider = styled.div`
-  border: 0.3rem red solid;
   display: flex;
-  width: 90vw;
-  height: 5vw;
+  flex: 1;
+  flex-wrap: wrap;
   color: black;
   margin-top: 3rem;
+  align-items: center;
+  padding-left: 1rem;
 `
 const FilterText = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ const FilterText = styled.div`
   align-items: center;
   font-size: 1.7rem;
   margin-right: 0.7rem;
-  margin-left: 0.5rem;
+  margin-left: 1.5rem;
   color: black;
 `
 
