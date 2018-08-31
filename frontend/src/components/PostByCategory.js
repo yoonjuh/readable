@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import CategoryNavigator from './CategoryNavigator'
+import NewPostButton from './NewPostButton'
 
 const categories = ['All', 'React', 'Graphql']
 
@@ -14,13 +16,20 @@ class PostByCategory extends Component {
     console.log(this.state.currentCategory)
     return (
       <div>
-        <CategoryNavigator
-          categories={categories}
-          currentCategory={this.state.currentCategory}
-          categoryToggler={this.categoryToggler}
-        />
+        <NvaiContainer>
+          <CategoryNavigator
+            categories={categories}
+            currentCategory={this.state.currentCategory}
+            categoryToggler={this.categoryToggler}
+          />
+        </NvaiContainer>
+        <NewPostButton />
       </div>
     )
   }
 }
 export default PostByCategory
+
+const NvaiContainer = styled.div`
+  width: 80vw;
+`
