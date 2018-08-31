@@ -22,11 +22,11 @@ const LinkContainer = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.2rem 1rem;
     text-decoration: none;
     color: white;
     background-color: #00b640;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

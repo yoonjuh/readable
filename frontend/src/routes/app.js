@@ -22,7 +22,6 @@ const App = () => (
 export default App
 
 const AppContainer = styled.div`
-  border: 0.5rem green solid;
   background-color: #eee;
   display: flex;
   flex: 1;
@@ -31,5 +30,5 @@ const AppContainer = styled.div`
   justify-content: stretch;
   font-size: 5rem;
   flex-direction: column;
-  margin: 1rem auto;
+  margin: 0.1rem auto;
 `

@@ -27,7 +27,6 @@ const NaviStyleProvider = styled.div`
   color: black;
   margin-top: 3rem;
   align-items: center;
-  padding-left: 1rem;
 `
 const FilterText = styled.div`
   display: flex;
@@ -35,7 +34,6 @@ const FilterText = styled.div`
   align-items: center;
   font-size: 1.7rem;
   margin-right: 0.7rem;
-  margin-left: 1.5rem;
   color: black;
 `
 

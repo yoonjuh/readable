@@ -14,7 +14,7 @@ const HeaderContainer = styled.div`
   flex: 1;
   flex-wrap: no-wrap;
   a {
-    font-size: 2.2rem;
+    font-size: 1.7rem;
     margin: 1rem 0;
     text-decoration: none;
     color: white;
