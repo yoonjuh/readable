@@ -12,6 +12,7 @@
     "eslint-config-airbnb-base": "^13.0.0",
     "final-form": "^4.8.2",
     "prop-types": "^15.6.2",
+    "ramda": "^0.25.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-final-form": "^3.6.2",
