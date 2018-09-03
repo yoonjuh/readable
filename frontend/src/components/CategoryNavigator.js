@@ -7,14 +7,27 @@ const CategoryNavigator = ({ categories, currentCategory, categoryToggler }) => 
   <NaviStyleProvider>
     <FilterText>{'Filter: '}</FilterText>
     {categories &&
-      categories.map(category => (
-        <CategoryButton
-          key={category}
-          category={category}
-          currentCategory={currentCategory}
-          categoryToggler={categoryToggler}
-        />
-      ))}
+      categories.map(category => {
+        if (category === '') {
+          return (
+            <CategoryButton
+              key={'All'}
+              category={'All'}
+              defaultValue
+              currentCategory={currentCategory}
+              categoryToggler={categoryToggler}
+            />
+          )
+        }
+        return (
+          <CategoryButton
+            key={category}
+            category={category}
+            currentCategory={currentCategory}
+            categoryToggler={categoryToggler}
+          />
+        )
+      })}
   </NaviStyleProvider>
 )
 

@@ -10,11 +10,13 @@ export default props => (
 
 const HeaderContainer = styled.div`
   background-color: #373c42;
+  margin-top: 1.5rem;
+  width: 100%;
   display: flex;
   flex: 1;
   flex-wrap: no-wrap;
   a {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     margin: 1rem 0;
     text-decoration: none;
     color: white;

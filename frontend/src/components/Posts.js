@@ -12,8 +12,7 @@ const dummyPost = [
     voteScore: 11,
     title: 'Something func',
     author: 'Edwin',
-    contents:
-      'I want to learn something fun!! -----------------------aaaaaaaaaaaaaaaaaaaaasdasdasddeaaaaaaaaaaaaaaaaasdgzxcbxcaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    contents: 'I want to learn something fun!! -----------------------aaaaaaaaaaaaaaaaaaaaasdasaaaaaaaaaaaaaaa',
     time: dummyTime.toString(),
   },
   {
@@ -43,7 +42,7 @@ const PostsContainer = Styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  border: .01rem #6c757d solid;
+  /* border: .1rem red dotted; */
   /* border: 0.5rem red solid; */
 
 

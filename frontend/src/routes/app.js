@@ -4,31 +4,34 @@ import styled from 'styled-components'
 import PostByCategory from '../components/PostByCategory'
 import './app.css'
 import Header from '../components/Header'
+import NewPostForm from '../components/NewPostForm'
+
+const categories = ['', 'React', 'Graphql']
 
 const App = () => (
   <Router>
-    <div>
+    {/* <div> */}
+    <AppContainer>
       <Header />
-      <AppContainer>
-        <Switch>
-          <Route exact path="/" render={() => <PostByCategory />} />
-          <Route exact path="/about" render={() => <div>{'about'}</div>} />
-        </Switch>
-      </AppContainer>
-    </div>
+      <Switch>
+        <Route exact path="/" render={() => <PostByCategory categories={categories} />} />
+        <Route exact path="/post/new" render={() => <NewPostForm categories={categories} />} />
+      </Switch>
+    </AppContainer>
+    {/* </div> */}
   </Router>
 )
 
 export default App
 
 const AppContainer = styled.div`
-  background-color: #eee;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: stretch;
   font-size: 5rem;
   flex-direction: column;
-  margin: 0.1rem auto;
+  margin: 0.2rem auto;
 `

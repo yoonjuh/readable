@@ -1,20 +1,19 @@
 import React, { Component } from 'react'
 import Styled from 'styled-components'
+import PropTypes from 'prop-types'
 import CategoryNavigator from './CategoryNavigator'
 import NewPostButton from './NewPostButton'
 import Posts from './Posts'
 
-const categories = ['All', 'React', 'Graphql']
-
 class PostByCategory extends Component {
   state = {
-    currentCategory: 'All',
+    currentCategory: '',
   }
   categoryToggler = newCategory => {
     this.setState({ currentCategory: newCategory })
   }
   render() {
-    console.log(this.state.currentCategory)
+    const { categories } = this.props
     return (
       <MainContainer>
         <NvaiContainer>
@@ -33,7 +32,7 @@ class PostByCategory extends Component {
 export default PostByCategory
 
 const MainContainer = Styled.div`
-  max-width: 80%;
+  max-width: 90%;
   max-height: 100%;
   display: flex;
   flex-direction: column;
@@ -42,3 +41,7 @@ const MainContainer = Styled.div`
 const NvaiContainer = Styled.div`
   flex: 1;
 `
+
+PostByCategory.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+}
