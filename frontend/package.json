@@ -8,12 +8,17 @@
     }
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.2.9",
+    "apollo-client": "^2.4.1",
+    "apollo-link-http": "^1.5.4",
     "axios": "^0.18.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "final-form": "^4.8.2",
+    "graphql": "^14.0.0",
     "prop-types": "^15.6.2",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
+    "react-apollo": "^2.1.11",
     "react-dom": "^16.4.1",
     "react-final-form": "^3.6.2",
     "react-redux": "^5.0.7",
