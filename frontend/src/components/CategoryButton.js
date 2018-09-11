@@ -25,23 +25,25 @@ const Button = styled.div`
   margin-right: 0.4rem;
   border-radius: 0.5rem;
   border: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'All' && defaultValue && currentCategory === '')
+    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
       ? ''
       : '0.05rem black solid'};
   color: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'All' && defaultValue && currentCategory === '') ? 'white' : 'black'};
+    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
+      ? 'white'
+      : 'black'};
   background-color: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'All' && defaultValue && currentCategory === '')
+    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
       ? 'rgba(231,0,65, 0.7)'
       : 'white'};
   box-shadow: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'All' && defaultValue && currentCategory === '')
+    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
       ? '0 0 1.5rem rgba(231,0,65, 0.5)'
       : ''};
   font-weight: 400;
   :hover {
     background-color: ${({ category, currentCategory, defaultValue }) =>
-      category === currentCategory || (category === 'All' && defaultValue && currentCategory === '')
+      category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
         ? '#dc3545'
         : 'rgba(55, 60, 66, 0.8)'};
     color: white;

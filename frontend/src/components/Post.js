@@ -110,8 +110,10 @@ const ThumbsDownButton = Styled.div`
   }
 `
 
-const Post = ({ item }) => {
-  const { category, voteScore, title, author, contents, time } = item
+const Post = ({ post = {} }) => {
+  const { category, voteScore, title, author, body, timestamp } = post
+  console.log(`from Post ${JSON.stringify(post)}`)
+  console.log(category, title, author)
   return (
     <PostContainer>
       <TitleWrapper>
@@ -126,8 +128,8 @@ const Post = ({ item }) => {
           <VoteScoreNumber>{`${voteScore < 0 ? '-' : ''}${voteScore}`} </VoteScoreNumber>
         </VoteScore>
       </KeyIndicator>
-      <Contents>{contents}</Contents>
-      <Time>{time}</Time>
+      <Contents>{body}</Contents>
+      <Time>{timestamp}</Time>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <ThumbsUpButtom>

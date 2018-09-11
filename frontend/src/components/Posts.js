@@ -3,37 +3,9 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Post from './Post'
 
-const dummyTime = new Date()
-
-const dummyPost = [
-  {
-    postId: 12457456345324,
-    category: 'React',
-    voteScore: 11,
-    title: 'Something func',
-    author: 'Edwin',
-    contents: 'I want to learn something fun!! -----------------------aaaaaaaaaaaaaaaaaaaaasdasaaaaaaaaaaaaaaa',
-    time: dummyTime.toString(),
-  },
-  {
-    postId: 12457345324,
-    category: 'React',
-    voteScore: -2,
-    title: 'Something func',
-    author: 'Edwin',
-    contents: 'I want to learn something fun!!',
-    time: dummyTime.toString(),
-  },
-]
-
-const Posts = () => (
-  <PostsContainer>
-    {dummyPost.map(item => (
-      <Post item={item} key={item.postId} />
-    ))}
-  </PostsContainer>
+const Posts = ({ posts = [] }) => (
+  <PostsContainer>{posts && posts.map(post => <Post post={post} key={post.id} />)}</PostsContainer>
 )
-
 export default Posts
 
 const PostsContainer = Styled.div`
@@ -42,8 +14,7 @@ const PostsContainer = Styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  /* border: .1rem red dotted; */
-  /* border: 0.5rem red solid; */
-
-
 `
+Posts.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+}
