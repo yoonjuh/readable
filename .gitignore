@@ -1,3 +1,4 @@
 #node_module
 /node_modules
+/apiServer/node_modules
 /frontend/node_modules
