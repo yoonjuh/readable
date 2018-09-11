@@ -1,4 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
+const R = require('ramda')
+
 
 const data = [
   {
@@ -40,7 +42,7 @@ const data = [
     title: 'React Nanodegree Program',
     body: "For the Readable project, you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.",
     author: 'mentor',
-    category: 'udacity',
+    category: 'react',
     voteScore: 12,
     deleted: false,
     commentCount: 0
@@ -49,24 +51,32 @@ const data = [
 
 const typeDefs = gql`
   type Post {
-    id: String
-    timestamp: Int
-    title: String
-    body: String
-    author: String
-    category: String
-    voteScore: Int
-    deleted: Boolean
-    commentCount: Int
+    id: String!
+    timestamp: String!
+    title: String!
+    body: String!
+    author: String!
+    category: String!
+    voteScore: Int!
+    deleted: Boolean!
+    commentCount: Int!
   }
 
+
   type Query {
+    getAllCategories: [String]
+    post: Post,
     getAllPosts: [Post]
   }
 `;
 const resolvers = {
   Query: {
-    getAllPosts: () => data
+    getAllPosts: () => {
+      return data
+    },
+    getAllCategories: () => {
+      return data.map(singleData => singleData.category)
+    }
   },
 };
 const server = new ApolloServer({ typeDefs, resolvers });

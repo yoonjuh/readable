@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server": "^2.0.6",
-    "graphql": "^14.0.0"
+    "graphql": "^14.0.0",
+    "ramda": "^0.25.0"
   }
 }
