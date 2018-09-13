@@ -2,16 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const CategoryButton = ({ category = '', currentCategory = '', categoryToggler = () => {}, defaultValue = false }) => (
-  <Button
-    onClick={() => categoryToggler(category)}
-    category={category}
-    currentCategory={currentCategory}
-    defaultValue={defaultValue}
-  >
-    {category}
-  </Button>
-)
+const CategoryButton = ({ category = '', currentCategory = '', categoryToggler = () => {} }) => {
+  console.log(`${category} and ${currentCategory}`)
+  return (
+    <Button onClick={() => categoryToggler(category)} category={category} currentCategory={currentCategory}>
+      {category}
+    </Button>
+  )
+}
 
 export default CategoryButton
 
@@ -24,26 +22,20 @@ const Button = styled.div`
   margin-left: 0.4rem;
   margin-right: 0.4rem;
   border-radius: 0.5rem;
-  border: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
-      ? ''
-      : '0.05rem black solid'};
-  color: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
-      ? 'white'
-      : 'black'};
-  background-color: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
-      ? 'rgba(231,0,65, 0.7)'
-      : 'white'};
-  box-shadow: ${({ category, currentCategory, defaultValue }) =>
-    category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
+  border: ${({ category, currentCategory }) =>
+    category === currentCategory || (category === 'ALL' && currentCategory === '') ? '' : '0.05rem black solid'};
+  color: ${({ category, currentCategory }) =>
+    category === currentCategory || (category === 'ALL' && currentCategory === '') ? 'white' : 'black'};
+  background-color: ${({ category, currentCategory }) =>
+    category === currentCategory || (category === 'ALL' && currentCategory === '') ? 'rgba(231,0,65, 0.7)' : 'white'};
+  box-shadow: ${({ category, currentCategory }) =>
+    category === currentCategory || (category === 'ALL' && currentCategory === '')
       ? '0 0 1.5rem rgba(231,0,65, 0.5)'
       : ''};
   font-weight: 400;
   :hover {
-    background-color: ${({ category, currentCategory, defaultValue }) =>
-      category === currentCategory || (category === 'ALL' && defaultValue && currentCategory === 'ALL')
+    background-color: ${({ category, currentCategory }) =>
+      category === currentCategory || (category === 'ALL' && currentCategory === '')
         ? '#dc3545'
         : 'rgba(55, 60, 66, 0.8)'};
     color: white;

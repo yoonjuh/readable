@@ -1,21 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { uniq, toUpper } from 'ramda'
+import { toUpper } from 'ramda'
 import CategoryButton from './CategoryButton'
 
 const CategoryNavigator = ({ categories, currentCategory, categoryToggler }) => (
   <NaviStyleProvider>
     <FilterText>{'Filter: '}</FilterText>
-    {categories &&
-      categories.map(category => (
-        <CategoryButton
-          key={category}
-          category={toUpper(category)}
-          currentCategory={currentCategory}
-          categoryToggler={categoryToggler}
-        />
-      ))}
+    <div style={{ display: 'flex', width: 'min-content' }}>
+      {categories &&
+        categories.map(category => (
+          <CategoryButton
+            key={category}
+            category={toUpper(category)}
+            currentCategory={currentCategory}
+            categoryToggler={categoryToggler}
+          />
+        ))}
+    </div>
   </NaviStyleProvider>
 )
 

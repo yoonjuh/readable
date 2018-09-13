@@ -34,6 +34,9 @@ const CloseButton = Styled.div`
 const Title = Styled.div`
   color: #FF292C;
   font-size: 2.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 const Author = Styled.div`
   font-size: 1.4rem;
@@ -112,8 +115,8 @@ const ThumbsDownButton = Styled.div`
 
 const Post = ({ post = {} }) => {
   const { category, voteScore, title, author, body, timestamp } = post
-  console.log(`from Post ${JSON.stringify(post)}`)
-  console.log(category, title, author)
+  // console.log(`from Post ${JSON.stringify(post)}`)
+  // console.log(category, title, author)
   return (
     <PostContainer>
       <TitleWrapper>
