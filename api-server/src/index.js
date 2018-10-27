@@ -1,24 +1,45 @@
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
+import mongoose from "mongoose";
 import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
 
-const { PORT = 4000, NODE_ENV = "development" } = process.env;
-const IN_PRODUCTION = NODE_ENV === "production";
+import {
+  PORT,
+  NODE_ENV,
+  DB_HOST,
+  DB_USER,
+  DB_PASSWORD,
+  DB_NAME,
+  DB_PORT,
+  IN_PRODUCTION
+} from "../config";
 
-const app = express();
+(async () => {
+  console.log(DB_PORT);
+  try {
+    await mongoose.connect(
+      `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+      { useNewUrlParser: true }
+    );
 
-//Disable unnescessary header
-app.disable("x-powered-by");
+    const app = express();
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-  playground: !IN_PRODUCTION
-});
+    //Disable unnescessary header
+    app.disable("x-powered-by");
 
-server.applyMiddleware({ app });
+    const server = new ApolloServer({
+      typeDefs,
+      resolvers,
+      playground: !IN_PRODUCTION
+    });
 
-app.listen({ port: PORT }, () => {
-  console.log(`http://localhost:${PORT}${server.graphqlPath}`);
-});
+    server.applyMiddleware({ app });
+
+    app.listen({ port: PORT }, () => {
+      console.log(`http://localhost:${PORT}${server.graphqlPath}`);
+    });
+  } catch (e) {
+    console.error(e);
+  }
+})();
