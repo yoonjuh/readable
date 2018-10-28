@@ -1,17 +1,24 @@
 {
-  "name": "readable",
+  "name": "Graphql_Server",
   "version": "1.0.0",
-  "description": "edwin's first full-stack application",
   "main": "index.js",
-  "repository": "https://github.com/EdwinYoon/readable.git",
-  "author": "edwinyoon <ep160101@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "dev": "nodemon -r esm api-server/src/index.js"
+  },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mongoose": "^5.1.5"
+    "apollo-server-express": "^2.1.0",
+    "concurrently": "^4.0.1",
+    "cors": "^2.8.4",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "global": "^4.3.2",
+    "graphql": "^14.0.2",
+    "mongoose": "^5.3.7",
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1"
+    "esm": "^3.0.84",
+    "nodemon": "^1.18.5"
   }
 }
