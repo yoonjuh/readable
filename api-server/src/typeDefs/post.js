@@ -1,6 +1,8 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
+  scalar Date
+
   extend type Query {
     post(id: ID!): Post
     posts: [Post!]!
@@ -15,13 +17,13 @@ export default gql`
   }
   type Post {
     id: ID!
-    timestamp: Int
     title: String!
     body: String!
     author: String!
     category: String!
     voteScore: Int
     deleted: Boolean!
-    commentCount: Int!
+    createdAt: Date!
+    updatedAt: Date!
   }
 `;
