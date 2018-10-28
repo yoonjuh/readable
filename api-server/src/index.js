@@ -1,6 +1,7 @@
 import { ApolloServer } from "apollo-server-express";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
 
@@ -24,6 +25,7 @@ import {
     );
 
     const app = express();
+    app.use(cors());
 
     //Disable unnescessary header
     app.disable("x-powered-by");
