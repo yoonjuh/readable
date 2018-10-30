@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import Styled from "styled-components";
 
-const FormCategory = ({ category = '', currentCategory = '', onChange = () => {} }) => (
+const FormCategory = ({ category = "", onChange = () => {} }) => (
   <Input type="radio" value={category} onChange={onChange} disabled />
 );
 
 export default FormCategory;
 
 const Input = Styled.input.attrs({
-  type: 'radio',
+  type: "radio",
   value: ({ category }) => category,
-  id: 'category',
+  id: "category",
   onChange: ({ onChange }) => onChange,
-  disabled: true,
+  disabled: true
 })`
   display: none;
 

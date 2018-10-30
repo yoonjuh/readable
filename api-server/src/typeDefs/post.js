@@ -17,12 +17,12 @@ export default gql`
   }
   type Post {
     id: ID!
+    voteScore: Int
+    deleted: Boolean!
+    category: String!
     title: String!
     body: String!
     author: String!
-    category: String!
-    voteScore: Int
-    deleted: Boolean!
     createdAt: Date!
     updatedAt: Date!
   }

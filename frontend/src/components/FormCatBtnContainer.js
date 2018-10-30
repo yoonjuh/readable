@@ -1,7 +1,7 @@
-import React from 'react';
-import Styled from 'styled-components';
-import PropTypes from 'prop-types';
-import FormCategory from './FormCategory';
+import React from "react";
+import Styled from "styled-components";
+import PropTypes from "prop-types";
+import FormCategory from "./FormCategory";
 
 const Label = Styled.label`
   display: flex;
@@ -10,32 +10,27 @@ const Label = Styled.label`
   padding: .2rem .2rem;
   width: 7rem;
   background-color: ${({ category, currentCategory, categories }) =>
-    category === currentCategory
-      ? '#C6002D'
-      : category === categories[1] && currentCategory === ''
-        ? '#C6002D'
-        : 'gray'}
+    category === currentCategory ? "#C6002D" : "gray"}
   color: white;
   font-size: 1.3rem;
   border-radius: 0.2rem;
 `;
 
-const FormCatBtnContainer = ({ categories, currentCategory, onClick }) => (
-  <div style={{ display: 'flex' }}>
-    {categories.filter(category => category.length > 0).map(category => (
+const FormCatBtnContainer = ({ categories, currentCat, onClick }) => (
+  <div style={{ display: "flex" }}>
+    {categories.map(category => (
       <Label
         category={category}
         categories={categories}
-        currentCategory={currentCategory}
+        currentCat={currentCat}
         key={category}
         htmlFor="category"
         onClick={() => onClick(category)}
       >
-        {category}
+        {category.toUpperCase()}
         <FormCategory
           category={category}
-          currentCategory={currentCategory}
-          isSelected={category === currentCategory}
+          isSelected={category === currentCat}
           categoryToggler={this.categoryToggler}
         />
       </Label>
@@ -48,5 +43,5 @@ export default FormCatBtnContainer;
 FormCatBtnContainer.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentCategory: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
