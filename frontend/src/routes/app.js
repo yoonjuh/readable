@@ -1,34 +1,19 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import styled from 'styled-components'
-import gql from 'graphql-tag'
-import { graphql, Query } from 'react-apollo'
-import PostByCategory from '../components/PostByCategory'
-import './app.css'
-import Header from '../components/Header'
-import NewPostForm from '../components/NewPostForm'
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import styled from "styled-components";
+import gql from "graphql-tag";
+import { graphql, Query } from "react-apollo";
+import { compose } from "recompose";
+import PostByCategory from "../components/PostByCategory";
+import "./app.css";
+import Header from "../components/Header";
+import NewPostForm from "../components/NewPostForm";
+import { GET_ALL_POST } from "../documents/query/post";
+import { GET_ALL_CATEGORIES } from "../documents/query/category";
 
-const GET_INITIAL_DATA = gql`
-  {
-    posts: getAllPosts {
-      id
-      timestamp
-      title
-      body
-      author
-      category
-      voteScore
-      deleted
-      commentCount
-    }
-    categories: getAllCategories
-  }
-`
-
-const categories = ['', 'React', 'Graphql', 'Redux']
-const App = ({ data }) => {
-  console.log(`from App ${JSON.stringify(data)}`)
-  if (data.loading) return null
+const App = ({ loadingCat, loadingPosts, categories, posts }) => {
+  if (loadingCat || loadingPosts) return <span>Loading....</span>;
+  const cat = categories.map(category => category.name);
   return (
     <Router>
       <AppContainer>
@@ -37,16 +22,32 @@ const App = ({ data }) => {
           <Route
             exact
             path="/"
-            render={() => <PostByCategory categories={categories} posts={data.posts} categories={data.categories} />}
+            render={() => <PostByCategory categories={cat} posts={posts} />}
           />
-          <Route exact path="/post/new" render={() => <NewPostForm categories={categories} />} />
+          <Route
+            exact
+            path="/post/new"
+            render={() => <NewPostForm categories={cat} />}
+          />
         </Switch>
       </AppContainer>
-      {/* </div> */}
     </Router>
-  )
-}
-export default graphql(GET_INITIAL_DATA)(App)
+  );
+};
+export default compose(
+  graphql(GET_ALL_CATEGORIES, {
+    props: ({ data }) => ({
+      loadingCat: data.loading,
+      categories: data.categories
+    })
+  }),
+  graphql(GET_ALL_POST, {
+    props: ({ data }) => ({
+      loadingPosts: data.loading,
+      posts: data.posts
+    })
+  })
+)(App);
 
 const AppContainer = styled.div`
   max-width: 100%;
@@ -58,4 +59,4 @@ const AppContainer = styled.div`
   font-size: 5rem;
   flex-direction: column;
   margin: 0.2rem auto;
-`
+`;
