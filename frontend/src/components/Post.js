@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Styled from 'styled-components';
 
 const PostContainer = Styled.div`
   background-color: #FFFFFF;
@@ -15,11 +15,11 @@ const PostContainer = Styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0.5rem 0;
-`
+`;
 const TitleWrapper = Styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 const CloseButton = Styled.div`
   color: #b4b4b4;
   font-weight: bold;
@@ -30,35 +30,35 @@ const CloseButton = Styled.div`
     color: 	#DC3545;
     transition-duration: 0.7s;
   }
-`
+`;
 const Title = Styled.div`
   color: #FF292C;
   font-size: 2.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`
+`;
 const Author = Styled.div`
   font-size: 1.4rem;
   color: #6B7485;
-`
+`;
 const Contents = Styled.div`
   font-size: 1.8rem;
   margin-top: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-`
+`;
 const Time = Styled.div`
 margin-top: .5rem;
   font-size: 1.4rem;
   color: #6B7485;
-`
+`;
 const KeyIndicator = Styled.div`
   margin-top: 1rem;
   display: flex;
   align-items: center;
-`
+`;
 const CategoryIcon = Styled.div`
   margin-right: 0.7rem;
   width: min-content;
@@ -67,7 +67,7 @@ const CategoryIcon = Styled.div`
   color: white;
   border-radius: .3rem;
   padding: .2rem .5rem;
-`
+`;
 const VoteScore = Styled.div`
   display: flex;
   justifyContent: center;
@@ -78,12 +78,12 @@ const VoteScore = Styled.div`
   color: white;
   border-radius: .3rem;
   padding: .2rem 0.5rem;
-`
+`;
 const VoteScoreNumber = Styled.div`
   color: #FFC900;
   margin-left: 0.3rem;
   font-size: 1.3rem;
-`
+`;
 const ThumbsUpButtom = Styled.div`
   color: #4169e1;
   border: .1rem #4169e1 solid;
@@ -96,11 +96,11 @@ const ThumbsUpButtom = Styled.div`
     background-color: #4169e1;
     color: white;
   }
-`
+`;
 const Icon = Styled.i`
   font-size: 2rem;
   padding-bottom: 0.3rem;
-`
+`;
 const ThumbsDownButton = Styled.div`
   border: .1rem grey solid;
   border-radius: .3rem;
@@ -111,10 +111,10 @@ const ThumbsDownButton = Styled.div`
     background-color: grey;
     color: white;
   }
-`
+`;
 
 const Post = ({ post = {} }) => {
-  const { category, voteScore, title, author, body, timestamp } = post
+  const { category, voteScore, title, author, body, timestamp } = post;
   // console.log(`from Post ${JSON.stringify(post)}`)
   // console.log(category, title, author)
   return (
@@ -144,7 +144,7 @@ const Post = ({ post = {} }) => {
         </div>
       </div>
     </PostContainer>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;

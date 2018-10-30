@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Styled from 'styled-components'
-import FormCategory from './FormCategory'
-import FormCatBtnContainer from './FormCatBtnContainer'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Styled from 'styled-components';
+import FormCategory from './FormCategory';
+import FormCatBtnContainer from './FormCatBtnContainer';
 
 const FormContainer = Styled.form`
   display: flex;
@@ -10,28 +10,28 @@ const FormContainer = Styled.form`
   flex: 1;
   width: 95%;
   margin-top: 3rem;
-`
+`;
 
 const CategoryLabel = Styled.label`
   flex: 1;
   font-size: 1.7rem;
-`
+`;
 const Label = Styled.label`
    margin-top: 1rem;
    display: flex;
    flex-direction: column;
    font-size: 1.7rem;
-`
+`;
 
 const Group = Styled.div`
   flex: 1;
-`
+`;
 const Button = Styled.button`
   width: 100%;
   background-color: blue;
   color: white;
   height: 3rem;
-`
+`;
 
 class NewPostForm extends Component {
   state = {
@@ -42,21 +42,21 @@ class NewPostForm extends Component {
   }
 
   onChangeHandler = e => {
-    const nextState = {}
-    nextState[e.target.name] = e.target.value
-    this.setState(nextState)
+    const nextState = {};
+    nextState[e.target.name] = e.target.value;
+    this.setState(nextState);
   }
   categoryToggler = newCategory => this.setState({ currentCategory: newCategory })
   submitHandler = e => {
-    e.preventDefault()
-    console.log(e)
+    e.preventDefault();
+    console.log(e);
     /** make an apu call and redirection to home! */
   }
 
   render() {
-    const { categories } = this.props
-    const { currentCategory, title, content, author } = this.state
-    console.log(title)
+    const { categories } = this.props;
+    const { currentCategory, title, content, author } = this.state;
+    console.log(title);
     return (
       <FormContainer>
         <Group>
@@ -115,12 +115,12 @@ class NewPostForm extends Component {
           </Button>
         </div>
       </FormContainer>
-    )
+    );
   }
 }
 
-export default NewPostForm
+export default NewPostForm;
 
 NewPostForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-}
+};

@@ -1,12 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default props => (
   <HeaderContainer>
     <Link to="/">{'Readable'}</Link>
   </HeaderContainer>
-)
+);
 
 const HeaderContainer = styled.div`
   background-color: #373c42;
@@ -26,4 +26,4 @@ const HeaderContainer = styled.div`
   a:hover {
     color: #d3d3d3;
   }
-`
+`;

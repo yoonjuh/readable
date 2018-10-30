@@ -1,27 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { toUpper } from 'ramda'
-import CategoryButton from './CategoryButton'
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { toUpper } from "ramda";
+import CategoryButton from "./CategoryButton";
 
-const CategoryNavigator = ({ categories, currentCategory, categoryToggler }) => (
+const CategoryNavigator = ({ categories, currentCat, categoryToggler }) => (
   <NaviStyleProvider>
-    <FilterText>{'Filter: '}</FilterText>
-    <div style={{ display: 'flex', width: 'min-content' }}>
+    <FilterText>{"Filter: "}</FilterText>
+    <div style={{ display: "flex", width: "min-content" }}>
       {categories &&
         categories.map(category => (
           <CategoryButton
             key={category}
             category={toUpper(category)}
-            currentCategory={currentCategory}
+            currentCat={currentCat}
             categoryToggler={categoryToggler}
           />
         ))}
     </div>
   </NaviStyleProvider>
-)
+);
 
-export default CategoryNavigator
+export default CategoryNavigator;
 
 const NaviStyleProvider = styled.div`
   display: flex;
@@ -30,7 +30,7 @@ const NaviStyleProvider = styled.div`
   color: black;
   margin-top: 3rem;
   align-items: center;
-`
+`;
 const FilterText = styled.div`
   display: flex;
   justify-content: center;
@@ -38,10 +38,10 @@ const FilterText = styled.div`
   font-size: 1.7rem;
   margin-right: 0.7rem;
   color: black;
-`
+`;
 
 CategoryNavigator.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentCategory: PropTypes.string.isRequired,
-  categoryToggler: PropTypes.func.isRequired,
-}
+  currentCat: PropTypes.string.isRequired,
+  categoryToggler: PropTypes.func.isRequired
+};

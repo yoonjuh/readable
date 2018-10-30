@@ -1,7 +1,7 @@
-import React from 'react'
-import Styled from 'styled-components'
-import PropTypes from 'prop-types'
-import FormCategory from './FormCategory'
+import React from 'react';
+import Styled from 'styled-components';
+import PropTypes from 'prop-types';
+import FormCategory from './FormCategory';
 
 const Label = Styled.label`
   display: flex;
@@ -18,7 +18,7 @@ const Label = Styled.label`
   color: white;
   font-size: 1.3rem;
   border-radius: 0.2rem;
-`
+`;
 
 const FormCatBtnContainer = ({ categories, currentCategory, onClick }) => (
   <div style={{ display: 'flex' }}>
@@ -41,12 +41,12 @@ const FormCatBtnContainer = ({ categories, currentCategory, onClick }) => (
       </Label>
     ))}
   </div>
-)
+);
 
-export default FormCatBtnContainer
+export default FormCatBtnContainer;
 
 FormCatBtnContainer.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
   currentCategory: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-}
+};
