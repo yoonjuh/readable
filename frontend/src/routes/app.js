@@ -27,7 +27,11 @@ const App = ({ loadingCat, loadingPosts, categories, posts }) => {
           <Route
             exact
             path="/post/new"
-            render={() => <NewPostForm categories={cat} />}
+            render={() => (
+              <NewPostForm
+                categories={cat.filter(category => category !== "all")}
+              />
+            )}
           />
         </Switch>
       </AppContainer>
@@ -45,7 +49,8 @@ export default compose(
     props: ({ data }) => ({
       loadingPosts: data.loading,
       posts: data.posts
-    })
+    }),
+    fetchPolicy: "cache-and-network"
   })
 )(App);
 
