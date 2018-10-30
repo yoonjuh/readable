@@ -1,8 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Styled from 'styled-components';
-import FormCategory from './FormCategory';
-import FormCatBtnContainer from './FormCatBtnContainer';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Styled from "styled-components";
+import { compose, withState, withHandlers } from "recompose";
+import { Mutation } from "react-apollo";
+import { withRouter } from "react-router";
+import FormCategory from "./FormCategory";
+import FormCatBtnContainer from "./FormCatBtnContainer";
+import { ADD_POST } from "../documents/mutation/post";
+import { GET_ALL_POST } from "../documents/query/post";
+import uuid from "uuid";
 
 const FormContainer = Styled.form`
   display: flex;
@@ -33,94 +39,138 @@ const Button = Styled.button`
   height: 3rem;
 `;
 
-class NewPostForm extends Component {
-  state = {
-    currentCategory: '',
-    title: '',
-    content: '',
-    author: '',
-  }
-
-  onChangeHandler = e => {
-    const nextState = {};
-    nextState[e.target.name] = e.target.value;
-    this.setState(nextState);
-  }
-  categoryToggler = newCategory => this.setState({ currentCategory: newCategory })
-  submitHandler = e => {
-    e.preventDefault();
-    console.log(e);
-    /** make an apu call and redirection to home! */
-  }
-
-  render() {
-    const { categories } = this.props;
-    const { currentCategory, title, content, author } = this.state;
-    console.log(title);
-    return (
-      <FormContainer>
+const NewPostForm = ({
+  currentCat,
+  title,
+  body,
+  author,
+  onCategoryChange,
+  onTitleChange,
+  onBodyChange,
+  onAuthorChange,
+  categories,
+  match,
+  history,
+  location
+}) => (
+  <Mutation
+    mutation={ADD_POST}
+    update={(cache, { data }) => {
+      const origin = cache.readQuery({ query: GET_ALL_POST });
+      const newPost = {
+        id: uuid(),
+        category: currentCat,
+        title,
+        body,
+        author,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        voteScore: 0,
+        deleted: false,
+        __typename: "Post"
+      };
+      cache.writeQuery({
+        query: GET_ALL_POST,
+        data: { posts: [...origin.posts, newPost] }
+      });
+    }}
+  >
+    {(addPost, { data }) => (
+      <FormContainer
+        onSubmit={e => {
+          e.preventDefault();
+          addPost({
+            variables: {
+              category: currentCat,
+              title,
+              body,
+              author
+            }
+          });
+          history.push("/");
+        }}
+      >
         <Group>
           <CategoryLabel htmlFor="categories">
-            {'Category'}
+            {"Category"}
             <FormCatBtnContainer
               id="categories"
               categories={categories}
-              currentCategory={currentCategory}
-              onClick={this.categoryToggler}
+              currentCat={currentCat}
+              onClick={onCategoryChange}
             />
           </CategoryLabel>
         </Group>
         <Group>
           <Label htmlFor="title">
-            {'Title '}
+            {"Title "}
             <input
-              style={{ height: '3rem' }}
+              style={{ height: "3rem" }}
               name="title"
               type="text"
               id="title"
               value={title}
-              onChange={this.onChangeHandler}
+              onChange={onTitleChange}
             />
           </Label>
         </Group>
         <Group>
           <Label htmlFor="content">
-            {'Content '}
+            {"Content "}
             <textarea
-              style={{ height: '10rem' }}
+              style={{ height: "10rem" }}
               type="text"
               id="content"
               name="content"
-              value={content}
-              onChange={this.onChangeHandler}
+              value={body}
+              onChange={onBodyChange}
             />
           </Label>
         </Group>
         <Group>
           <Label>
-            {'Author '}
+            {"Author "}
             <input
-              style={{ height: '3rem' }}
+              style={{ height: "3rem" }}
               name="author"
               type="text"
               id="author"
               value={author}
-              onChange={this.onChangeHandler}
+              onChange={onAuthorChange}
             />
           </Label>
         </Group>
-        <div style={{ marginTop: '2rem' }}>
-          <Button type="submit" onSubmit={this.submitHandler}>
-            {'Submit'}
-          </Button>
+        <div style={{ marginTop: "2rem" }}>
+          <Button type="submit">Submit</Button>
         </div>
       </FormContainer>
-    );
-  }
-}
+    )}
+  </Mutation>
+);
 
-export default NewPostForm;
+const EnhancedNewPostForm = compose(
+  withState("currentCat", "setCat", "react"),
+  withState("title", "setTitle", ""),
+  withState("body", "setBody", ""),
+  withState("author", "setAuthor", ""),
+  withHandlers({
+    onCategoryChange: ({ setCat }) => newCat => {
+      setCat(newCat);
+    },
+    onTitleChange: ({ setTitle }) => e => {
+      setTitle(e.target.value);
+    },
+    onBodyChange: ({ setBody }) => e => {
+      setBody(e.target.value);
+    },
+    onAuthorChange: ({ setAuthor }) => e => {
+      setAuthor(e.target.value);
+    }
+  })
+)(withRouter(NewPostForm));
+
+export default EnhancedNewPostForm;
 
 NewPostForm.propTypes = {
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired
 };
