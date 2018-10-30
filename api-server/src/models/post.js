@@ -6,8 +6,14 @@ const postSchema = new mongoose.Schema(
     body: String,
     author: String,
     category: String,
-    voteScore: Number,
-    deleted: Boolean,
+    voteScore: {
+      type: Number,
+      default: 0
+    },
+    deleted: {
+      type: Boolean,
+      default: false
+    },
     creactedAt: Date,
     updatedAt: Date
   },

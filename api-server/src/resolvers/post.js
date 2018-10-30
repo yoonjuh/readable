@@ -9,6 +9,7 @@ export default {
   },
   Mutation: {
     addPost: (root, args, context, info) => {
+
       //TODO args validation,
       return Post.create(args);
     }
