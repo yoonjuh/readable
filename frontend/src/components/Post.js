@@ -1,6 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Styled from "styled-components";
+import TimeAgo from "react-timeago";
+import frenchStrings from "react-timeago/lib/language-strings/en";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+
 import { Mutation } from "react-apollo";
 import { DELETE_POST } from "../documents/mutation/post";
 import { GET_ALL_POST } from "../documents/query/post";
@@ -54,7 +58,7 @@ const Contents = Styled.div`
 `;
 const Time = Styled.div`
 margin-top: .5rem;
-  font-size: 1.4rem;
+  font-size: 2rem;
   color: #6B7485;
 `;
 const KeyIndicator = Styled.div`
@@ -104,21 +108,23 @@ const ThumbsUpButtom = Styled.div`
 const Icon = Styled.i`
   font-size: 2rem;
   padding-bottom: 0.3rem;
+
 `;
 const ThumbsDownButton = Styled.div`
   border: .1rem grey solid;
   border-radius: .3rem;
   width: min-content;
   padding: 0 .5rem;
-
   :hover {
     background-color: grey;
     color: white;
   }
 `;
 
+const formatter = buildFormatter(frenchStrings);
+
 const Post = ({
-  post: { id, category, voteScore, title, author, body, createdAt }
+  post: { id, category, voteScore, title, author, body, createdAt, updatedAt }
 }) => {
   return (
     <Mutation
@@ -152,7 +158,9 @@ const Post = ({
             </VoteScore>
           </KeyIndicator>
           <Contents>{body}</Contents>
-          <Time>{createdAt}</Time>
+          <Time>
+            <TimeAgo date={updatedAt} formatter={formatter} />
+          </Time>
           <div
             style={{
               display: "flex",
