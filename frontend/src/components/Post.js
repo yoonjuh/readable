@@ -1,6 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import Styled from "styled-components";
+import { Mutation } from "react-apollo";
+import { DELETE_POST } from "../documents/mutation/post";
+import { GET_ALL_POST } from "../documents/query/post";
 
 const PostContainer = Styled.div`
   background-color: #FFFFFF;
@@ -74,7 +77,8 @@ const VoteScore = Styled.div`
   align-items: center;
   width: min-content;
   font-size: 1.3rem;
-  background-color: ${({ voteScore }) => (voteScore >= 10 ? '#dc3545' : 'gray')};
+  background-color: ${({ voteScore }) =>
+    voteScore >= 10 ? "#dc3545" : "gray"};
   color: white;
   border-radius: .3rem;
   padding: .2rem 0.5rem;
@@ -113,37 +117,68 @@ const ThumbsDownButton = Styled.div`
   }
 `;
 
-const Post = ({ post = {} }) => {
-  const { category, voteScore, title, author, body, timestamp } = post;
-  // console.log(`from Post ${JSON.stringify(post)}`)
-  // console.log(category, title, author)
+const Post = ({
+  post: { id, category, voteScore, title, author, body, createdAt }
+}) => {
   return (
-    <PostContainer>
-      <TitleWrapper>
-        <Title>{title}</Title>
-        <CloseButton>{'×'}</CloseButton>
-      </TitleWrapper>
-      <Author>{`Posted by ${author}`}</Author>
-      <KeyIndicator>
-        <CategoryIcon>{category}</CategoryIcon>
-        <VoteScore voteScore={voteScore}>
-          {'Vote'}
-          <VoteScoreNumber>{`${voteScore < 0 ? '-' : ''}${voteScore}`} </VoteScoreNumber>
-        </VoteScore>
-      </KeyIndicator>
-      <Contents>{body}</Contents>
-      <Time>{timestamp}</Time>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <ThumbsUpButtom>
-            <Icon className="far fa-thumbs-up" />
-          </ThumbsUpButtom>
-          <ThumbsDownButton>
-            <Icon className="far fa-thumbs-down" />
-          </ThumbsDownButton>
-        </div>
-      </div>
-    </PostContainer>
+    <Mutation
+      mutation={DELETE_POST}
+      update={(cache, { data }) => {
+        const origin = cache.readQuery({ query: GET_ALL_POST });
+        const newPosts = origin.posts.filter(post => post.id !== id);
+
+        cache.writeQuery({
+          query: GET_ALL_POST,
+          data: { posts: [...newPosts] }
+        });
+      }}
+    >
+      {(deletePost, { data }) => (
+        <PostContainer>
+          <TitleWrapper>
+            <Title>{title}</Title>
+            <CloseButton onClick={() => deletePost({ variables: { id } })}>
+              {"×"}
+            </CloseButton>
+          </TitleWrapper>
+          <Author>{`Posted by ${author}`}</Author>
+          <KeyIndicator>
+            <CategoryIcon>{category}</CategoryIcon>
+            <VoteScore voteScore={voteScore}>
+              {"Vote"}
+              <VoteScoreNumber>
+                {`${voteScore < 0 ? "-" : ""}${voteScore}`}{" "}
+              </VoteScoreNumber>
+            </VoteScore>
+          </KeyIndicator>
+          <Contents>{body}</Contents>
+          <Time>{createdAt}</Time>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginTop: "2rem"
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <ThumbsUpButtom>
+                <Icon className="far fa-thumbs-up" />
+              </ThumbsUpButtom>
+              <ThumbsDownButton>
+                <Icon className="far fa-thumbs-down" />
+              </ThumbsDownButton>
+            </div>
+          </div>
+        </PostContainer>
+      )}
+    </Mutation>
   );
 };
 
