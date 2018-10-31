@@ -13,7 +13,7 @@ import { GET_ALL_CATEGORIES } from "../documents/query/category";
 
 const App = ({ loadingCat, loadingPosts, categories, posts }) => {
   if (loadingCat || loadingPosts) return <span>Loading....</span>;
-  const cat = categories.map(category => category.name);
+  const cat = categories.map(category => category.name).sort();
   return (
     <Router>
       <AppContainer>
@@ -43,7 +43,9 @@ export default compose(
     props: ({ data }) => ({
       loadingCat: data.loading,
       categories: data.categories
-    })
+    }),
+
+    fetchPolicy: "cache-and-network"
   }),
   graphql(GET_ALL_POST, {
     props: ({ data }) => ({

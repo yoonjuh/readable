@@ -9,8 +9,8 @@ const Label = Styled.label`
   align-items: center;
   padding: .2rem .2rem;
   width: 7rem;
-  background-color: ${({ category, currentCategory, categories }) =>
-    category === currentCategory ? "#C6002D" : "gray"}
+  background-color: ${({ category, currentCat, categories }) =>
+    category === currentCat ? "#C6002D" : "gray"}
   color: white;
   font-size: 1.3rem;
   border-radius: 0.2rem;
@@ -42,6 +42,6 @@ export default FormCatBtnContainer;
 
 FormCatBtnContainer.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentCategory: PropTypes.string.isRequired,
+  currentCat: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };

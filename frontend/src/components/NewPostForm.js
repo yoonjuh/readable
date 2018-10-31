@@ -75,81 +75,84 @@ const NewPostForm = ({
       });
     }}
   >
-    {(addPost, { data }) => (
-      <FormContainer
-        onSubmit={e => {
-          e.preventDefault();
-          addPost({
-            variables: {
-              category: currentCat,
-              title,
-              body,
-              author
-            }
-          });
-          history.push("/");
-        }}
-      >
-        <Group>
-          <CategoryLabel htmlFor="categories">
-            {"Category"}
-            <FormCatBtnContainer
-              id="categories"
-              categories={categories}
-              currentCat={currentCat}
-              onClick={onCategoryChange}
-            />
-          </CategoryLabel>
-        </Group>
-        <Group>
-          <Label htmlFor="title">
-            {"Title "}
-            <input
-              style={{ height: "3rem" }}
-              name="title"
-              type="text"
-              id="title"
-              value={title}
-              onChange={onTitleChange}
-            />
-          </Label>
-        </Group>
-        <Group>
-          <Label htmlFor="content">
-            {"Content "}
-            <textarea
-              style={{ height: "10rem" }}
-              type="text"
-              id="content"
-              name="content"
-              value={body}
-              onChange={onBodyChange}
-            />
-          </Label>
-        </Group>
-        <Group>
-          <Label>
-            {"Author "}
-            <input
-              style={{ height: "3rem" }}
-              name="author"
-              type="text"
-              id="author"
-              value={author}
-              onChange={onAuthorChange}
-            />
-          </Label>
-        </Group>
-        <div style={{ marginTop: "2rem" }}>
-          <Button type="submit">Submit</Button>
-        </div>
-      </FormContainer>
-    )}
+    {(addPost, { data }) => {
+      console.log(currentCat);
+      return (
+        <FormContainer
+          onSubmit={e => {
+            e.preventDefault();
+            addPost({
+              variables: {
+                category: currentCat,
+                title,
+                body,
+                author
+              }
+            });
+            history.push("/");
+          }}
+        >
+          <Group>
+            <CategoryLabel htmlFor="categories">
+              {"Category"}
+              <FormCatBtnContainer
+                id="categories"
+                categories={categories}
+                currentCat={currentCat}
+                onClick={onCategoryChange}
+              />
+            </CategoryLabel>
+          </Group>
+          <Group>
+            <Label htmlFor="title">
+              {"Title "}
+              <input
+                style={{ height: "3rem" }}
+                name="title"
+                type="text"
+                id="title"
+                value={title}
+                onChange={onTitleChange}
+              />
+            </Label>
+          </Group>
+          <Group>
+            <Label htmlFor="content">
+              {"Content "}
+              <textarea
+                style={{ height: "10rem" }}
+                type="text"
+                id="content"
+                name="content"
+                value={body}
+                onChange={onBodyChange}
+              />
+            </Label>
+          </Group>
+          <Group>
+            <Label>
+              {"Author "}
+              <input
+                style={{ height: "3rem" }}
+                name="author"
+                type="text"
+                id="author"
+                value={author}
+                onChange={onAuthorChange}
+              />
+            </Label>
+          </Group>
+          <div style={{ marginTop: "2rem" }}>
+            <Button type="submit">Submit</Button>
+          </div>
+        </FormContainer>
+      );
+    }}
   </Mutation>
 );
 
 const EnhancedNewPostForm = compose(
-  withState("currentCat", "setCat", "react"),
+  withState("currentCat", "setCat", "graphql"),
   withState("title", "setTitle", ""),
   withState("body", "setBody", ""),
   withState("author", "setAuthor", ""),
