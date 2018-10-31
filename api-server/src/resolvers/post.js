@@ -9,9 +9,17 @@ export default {
   },
   Mutation: {
     addPost: (root, args, context, info) => {
-
       //TODO args validation,
       return Post.create(args);
+    },
+    deletePost: (root, args, context, info) => {
+      console.log(args);
+      Post.findByIdAndDelete({ _id: args.id }, err => {
+        if (err) {
+          console.error(err);
+        }
+        return args.id;
+      });
     }
   }
 };

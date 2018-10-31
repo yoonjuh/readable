@@ -14,6 +14,7 @@ export default gql`
       body: String!
       author: String!
     ): Post
+    deletePost(id: ID!): Post
   }
   type Post {
     id: ID!
