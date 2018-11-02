@@ -1,10 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import gql from "graphql-tag";
-import { graphql, Query } from "react-apollo";
+import { graphql } from "react-apollo";
 import { compose } from "recompose";
-import PostByCategory from "../components/PostByCategory";
+import PostContainer from "../containers/PostContainer";
 import "./app.css";
 import Header from "../components/Header";
 import NewPostForm from "../components/NewPostForm";
@@ -22,7 +21,7 @@ const App = ({ loadingCat, loadingPosts, categories, posts }) => {
           <Route
             exact
             path="/"
-            render={() => <PostByCategory categories={cat} posts={posts} />}
+            render={() => <PostContainer categories={cat} posts={posts} />}
           />
           <Route
             exact

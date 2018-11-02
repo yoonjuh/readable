@@ -12,7 +12,7 @@ const CategoryNavigator = ({ categories, currentCat, categoryToggler }) => (
         categories.map(category => (
           <CategoryButton
             key={category}
-            category={toUpper(category)}
+            category={category}
             currentCat={currentCat}
             categoryToggler={categoryToggler}
           />

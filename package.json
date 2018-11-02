@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon -r esm api-server/src/index.js",
-    "start":"concurrently 'cd frontend && yarn start' 'yarn dev'"
+    "start": "concurrently 'cd frontend && yarn start' 'yarn dev'"
   },
   "dependencies": {
     "apollo-server-express": "^2.1.0",
