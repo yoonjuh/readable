@@ -9,8 +9,9 @@ import Header from "../components/Header";
 import NewPostForm from "../components/NewPostForm";
 import { GET_ALL_POST } from "../documents/query/post";
 import { GET_ALL_CATEGORIES } from "../documents/query/category";
+import PostDetail from "../components/PostDetail";
 
-const App = ({ loadingCat, loadingPosts, categories, posts }) => {
+const App = ({ loadingCat, loadingPosts, categories = [], posts = [] }) => {
   if (loadingCat || loadingPosts) return <span>Loading....</span>;
   const cat = categories.map(category => category.name).sort();
   return (
@@ -31,6 +32,16 @@ const App = ({ loadingCat, loadingPosts, categories, posts }) => {
                 categories={cat.filter(category => category !== "all")}
               />
             )}
+          />
+          <Route
+            exact
+            path="/:id"
+            render={({ match }) => {
+              const filtered = posts.filter(
+                post => post.id === match.params.id
+              );
+              return <PostDetail posts={filtered} />;
+            }}
           />
         </Switch>
       </AppContainer>
@@ -64,5 +75,4 @@ const AppContainer = styled.div`
   justify-content: stretch;
   font-size: 5rem;
   flex-direction: column;
-  margin: 0.2rem auto;
 `;
