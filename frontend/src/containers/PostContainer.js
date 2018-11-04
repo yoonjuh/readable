@@ -40,8 +40,11 @@ const PostContainer = ({ categoryToggler, categories, posts }, ...props) => {
 export default PostContainer;
 
 const MainContainer = Styled.div`
-  max-width: 90%;
+  padding: 0rem 3rem;
+  max-width: 100%;
+  min-width: 100%;
   max-height: 100%;
+  margin: 0rem 1rem;
   display: flex;
   flex-direction: column;
 `;
