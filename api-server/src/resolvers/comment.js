@@ -2,13 +2,14 @@ import { Comment } from "../models";
 
 export default {
   Query: {
-    comments: (root, args, context, info) => {
-      return Comment.find({});
+    comment: (root, args, context, info) => {
+      return Comment.find({_id: args.postId});
     }
   },
   Mutation: {
     addComment: (root, args, context, info) => {
-      return Post.create(args);
+
+      return Comment.create(args);
     },
     deleteComment: (root, args, context, info) => {
       Comment.findByIdAndDelete({ _id: args.id }, err => {

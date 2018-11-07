@@ -4,10 +4,10 @@ export default gql`
   scalar Date
 
   extend type Query {
-    comments(postId: ID!): [Comment!]!
+    comment(postId: ID!): [Comment!]!
   }
   extend type Mutation {
-    addComment(body: String!, author: String!): Comment
+    addComment(body: String!, author: String!, postId: String!): Comment
     deleteComment(id: ID!): Comment
   }
   type Comment {

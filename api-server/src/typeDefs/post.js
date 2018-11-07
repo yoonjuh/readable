@@ -1,11 +1,10 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
-  scalar Date
-
   extend type Query {
     post(id: ID!): Post
-    posts: [Post!]!
+    comments: [Comment]
+    posts: [Post!]
   }
   extend type Mutation {
     addPost(
@@ -21,6 +20,7 @@ export default gql`
     voteScore: Int
     deleted: Boolean!
     category: String!
+    comments: [Comment]
     title: String!
     body: String!
     author: String!
@@ -28,3 +28,4 @@ export default gql`
     updatedAt: Date!
   }
 `;
+

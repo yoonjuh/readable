@@ -1,11 +1,19 @@
-import { Post } from "../models";
+import { Post, Comment } from "../models";
+import { filter } from 'lodash'
 
 export default {
   Query: {
     posts: (root, args, context, info) => {
-      return Post.find({});
+      console.log(root)
+      return Post.find({})
+
     },
     post: (root, args, context, info) => {}
+  },
+  Post: {
+    comments(post) {
+      return Comment.find({postId: post._id})
+    }
   },
   Mutation: {
     addPost: (root, args, context, info) => {
