@@ -1,17 +1,17 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import styled from "styled-components";
-import { graphql } from "react-apollo";
-import { compose } from "recompose";
-import PostContainer from "../containers/PostContainer";
-import "./app.css";
-import Header from "../components/Header";
-import NewPostForm from "../components/NewPostForm";
-import { GET_ALL_POST } from "../documents/query/post";
-import { GET_ALL_CATEGORIES } from "../documents/query/category";
-import PostDetail from "../components/PostDetail";
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import styled from 'styled-components';
+import {graphql} from 'react-apollo';
+import {compose} from 'recompose';
+import PostContainer from '../containers/PostContainer';
+import './app.css';
+import Header from '../components/Header';
+import NewPostForm from '../components/NewPostForm';
+import {GET_ALL_POST} from '../documents/query/post';
+import {GET_ALL_CATEGORIES} from '../documents/query/category';
+import PostDetail from '../components/PostDetail';
 
-const App = ({ loadingCat, loadingPosts, categories = [], posts = [] }) => {
+const App = ({loadingCat, loadingPosts, categories = [], posts = []}) => {
   if (loadingCat || loadingPosts) return <span>Loading....</span>;
   const cat = categories.map(category => category.name).sort();
   return (
@@ -29,19 +29,24 @@ const App = ({ loadingCat, loadingPosts, categories = [], posts = [] }) => {
             path="/post/new"
             render={() => (
               <NewPostForm
-                categories={cat.filter(category => category !== "all")}
+                categories={cat.filter(category => category !== 'all')}
               />
             )}
           />
           <Route
             exact
             path="/:id"
-            render={({ match }) => {
-              const filtered = posts.filter(
-                post => post.id === match.params.id
-              );
-              return <PostDetail posts={filtered} />;
-            }}
+            render={({match}) =>
+              posts
+                .filter(post => post.id === match.params.id)
+                .map(post => (
+                  <PostDetail
+                    post={post}
+                    comments={post.comments}
+                    key={post.id}
+                  />
+                ))
+            }
           />
         </Switch>
       </AppContainer>
@@ -50,19 +55,19 @@ const App = ({ loadingCat, loadingPosts, categories = [], posts = [] }) => {
 };
 export default compose(
   graphql(GET_ALL_CATEGORIES, {
-    props: ({ data }) => ({
+    props: ({data}) => ({
       loadingCat: data.loading,
-      categories: data.categories
+      categories: data.categories,
     }),
 
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: 'cache-and-network',
   }),
   graphql(GET_ALL_POST, {
-    props: ({ data }) => ({
+    props: ({data}) => ({
       loadingPosts: data.loading,
-      posts: data.posts
+      posts: data.posts,
     }),
-    fetchPolicy: "cache-and-network"
+    fetchPolicy: 'cache-and-network',
   })
 )(App);
 
