@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const GET_ALL_POST = gql`
   {
@@ -8,6 +8,15 @@ export const GET_ALL_POST = gql`
       body
       author
       category
+      comments {
+        id
+        postId
+        deleted
+        author
+        createdAt
+        updatedAt
+        body
+      }
       createdAt
       updatedAt
       voteScore
