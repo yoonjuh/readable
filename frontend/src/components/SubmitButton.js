@@ -1,5 +1,5 @@
-import React from "react";
-import Styled from "styled-components";
+import React from 'react';
+import Styled from 'styled-components';
 
 const Button = Styled.button`
   margin-top: 1rem;
@@ -11,8 +11,8 @@ const Button = Styled.button`
   border-radius: .5rem;
 `;
 
-const SubmitBtn = ({ isSubmit, onClick }) => (
-  <Button type={isSubmit} onClick={isSubmit === "submit" ? null : onClick}>
+const SubmitBtn = ({isSubmit, onClick}) => (
+  <Button type={isSubmit} onClick={isSubmit === 'submit' ? null : onClick}>
     Submit
   </Button>
 );
