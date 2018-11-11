@@ -12,8 +12,11 @@ export default gql`
       title: String!
       body: String!
       author: String!
-    ): Post
+    ): Post!
     deletePost(id: ID!): Post
+    upVotePost(id: ID!): Post!
+    downVotePost(id: ID!): Post!
+
   }
   type Post {
     id: ID!
