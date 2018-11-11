@@ -5,10 +5,14 @@ export default gql`
 
   extend type Query {
     comment(postId: ID!): [Comment!]!
+    allComments: [Comment!]!
+
   }
   extend type Mutation {
     addComment(body: String!, author: String!, postId: String!): Comment
     deleteComment(id: ID!): Comment
+    upVoteComment(id: ID!): Comment
+    downVoteComment(id: ID!): Comment
   }
   type Comment {
     id: ID!

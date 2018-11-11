@@ -3,4 +3,4 @@ import post from "./post";
 import category from "./category";
 import comment from "./comment";
 
-export default [root, post, category, comment];
+export default [root, post, category, comment ];
