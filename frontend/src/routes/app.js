@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import styled from 'styled-components';
-import '../style';
+import GlobalStyle from '../style';
 import MainContainer from '../Main/containers/MainContainer';
 
 const AppContainer = styled.div`
@@ -13,6 +13,7 @@ const AppContainer = styled.div`
 const App = () => (
   <Router>
     <AppContainer>
+      <GlobalStyle />
       <Route exact path="/" render={() => <MainContainer />} />
     </AppContainer>
   </Router>
