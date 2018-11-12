@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SidebarNavi from '../components/SidebarNavi';
 
 const StyledSidebar = styled.aside`
-  width: 20rem;
+  min-width: 20rem;
   border: 0.5rem red solid;
   display: flex;
   flex-direction: column;
