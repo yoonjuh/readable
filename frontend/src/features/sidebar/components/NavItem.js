@@ -4,15 +4,17 @@ import styled from 'styled-components';
 
 const StyledItem = styled(Link)`
   flex: 1;
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
-  color: black;
+  color: white;
   &:hover {
-    background-color: #e0e0e0;
+    background-color: black;
+    /* background-color: #e0e0e0; */
+    color: #3498db;
     transition: all 0.2s;
   }
   &:active {

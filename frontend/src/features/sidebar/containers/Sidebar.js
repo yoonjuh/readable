@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import SidebarNavi from '../components/SidebarNavi';
 
 const StyledSidebar = styled.aside`
-  min-width: 20rem;
-  border: 0.5rem red solid;
+  min-width: 17rem;
   display: flex;
   flex-direction: column;
+  background-color: #686868;
 `;
 
 const StyledLink = styled(Link)`
@@ -18,8 +18,12 @@ const StyledLink = styled(Link)`
   font-family: -apple-system, 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue',
     sans-serif;
   text-decoration: none;
-  color: black;
+  color: white;
   font-weight: 400;
+  &:hover {
+    color: #3498db;
+    transition: all 0.2s;
+  }
 `;
 
 const Sidebar = () => (
