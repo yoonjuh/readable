@@ -1,19 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import {graphql} from 'react-apollo';
+import Loader from 'react-loader-spinner';
 import {GET_ALL_POST} from '../../../documents/query/post';
+
 import Post from '../components/Post';
 
 const PostBox = styled.div`
-  border: 0.5rem red solid;
   flex: 1;
   display: flex;
   flex-wrap: wrap;
 `;
 
 const PostContainer = ({loading, posts}) => {
-  if (loading) return <div>Loading...</div>;
-  console.log(posts);
+  if (loading)
+    return (
+      <PostBox
+        style={{
+          justifyContent: 'center',
+          minHeight: '100rem',
+          minWidth: '100rem',
+          padding: '10rem',
+        }}
+      >
+        <Loader type="Ball-Triangle" color="#A6ACAF" width="50" height="50" />
+      </PostBox>
+    );
   return (
     <PostBox>
       {posts && posts.map(post => <Post key={post.id} post={post} />)}
