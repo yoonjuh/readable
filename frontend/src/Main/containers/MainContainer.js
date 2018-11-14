@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Sidebar from '../../features/sidebar/containers/Sidebar';
 import Header from '../../features/header/Header';
+import PostContainer from '../../features/post/containers/PostContainer';
 
 const MainBox = styled.div`
   min-width: 100%;
@@ -13,7 +14,7 @@ const BodyContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 2rem;
+  padding: 0rem 0.5rem;
 `;
 const MainBody = styled.div`
   flex: 1;
@@ -25,7 +26,7 @@ const MainContainer = () => (
     <Sidebar />
     <BodyContainer>
       <Header />
-      <MainBody>Body</MainBody>
+      <PostContainer />
     </BodyContainer>
   </MainBox>
 );
