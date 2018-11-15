@@ -10,6 +10,7 @@ const PostBox = styled.div`
   flex: 1;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
 `;
 
 const PostContainer = ({loading, posts}) => {

@@ -1,27 +1,32 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+
 import {Link} from 'react-router-dom';
 import img from '../../../img/test2.jpg';
 
 const Envelope = styled.div`
   font-size: 2rem;
+  background-color: white;
   @media screen and (max-width: 1500px) {
     width: calc(25% - 2rem);
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 1050px) {
     width: calc(33.333% - 2rem);
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 850px) {
     width: calc(50% - 2rem);
+  }
+  @media screen and (max-width: 650px) {
+    width: calc(100% - 2rem);
   }
 
   margin: 1rem;
-  border: 0.5rem red solid;
   display: flex;
   flex-direction: column;
   max-height: 31rem;
+  position: relative;
 `;
 const Img = styled.img`
   max-width: 100%;
