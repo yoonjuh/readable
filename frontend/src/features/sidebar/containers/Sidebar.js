@@ -8,13 +8,16 @@ const StyledSidebar = styled.aside`
   display: flex;
   flex-direction: column;
   background-color: #686868;
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
 `;
 
 const StyledLink = styled(Link)`
   display: flex;
   padding: 1.5rem 2.5rem;
   align-items: flex-start;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-family: -apple-system, 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue',
     sans-serif;
   text-decoration: none;
@@ -26,10 +29,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Sidebar = () => (
+const Sidebar = ({navItems}) => (
   <StyledSidebar>
     <StyledLink to="/">Readable</StyledLink>
-    <SidebarNavi />
+    <SidebarNavi navItems={navItems} />
   </StyledSidebar>
 );
 

@@ -14,18 +14,26 @@ const BodyContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 0.5rem;
+  padding: 0rem 1rem;
 `;
-const MainBody = styled.div`
-  flex: 1;
-  border: 0.5rem red solid;
-`;
+const navItems = [
+  {
+    name: 'Latest Post',
+    icon: 'fas fa-burn',
+    path: 'new',
+  },
+  {
+    name: 'Trendy Post',
+    icon: 'far fa-heart',
+    path: 'trendy',
+  },
+];
 
 const MainContainer = () => (
   <MainBox>
-    <Sidebar />
+    <Sidebar navItems={navItems} />
     <BodyContainer>
-      <Header />
+      <Header navItems={navItems} />
       <PostContainer />
     </BodyContainer>
   </MainBox>

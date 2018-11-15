@@ -1,13 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+import HeaderTab from './HeaderTab';
 
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 3rem 1rem;
+
+  @media screen and (max-width: 650px) {
+    padding: 1rem;
+  }
+`;
 const HeaderContainer = styled.div`
+  flex: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.7rem;
   border: none;
-  padding: 3rem 0rem;
+  font-size: 1.4rem;
 `;
 const NewPostButton = styled.button`
   cursor: pointer;
@@ -15,18 +26,41 @@ const NewPostButton = styled.button`
   color: white;
   padding: 0.3rem 0.5rem;
   border-radius: 0.5rem;
-  font-weight: 500;
+  font-weight: 400;
   &:hover {
     background-color: #5478e4;
     transition: all 0.2s;
   }
 `;
+const ProjectTitle = styled(Link)`
+  display: flex;
+  padding: 0.5rem 0.5rem;
+  align-items: flex-start;
+  font-size: 1.7rem;
+  font-family: 'Open Sans', 'Helvetica Neue';
+  text-decoration: none;
+  color: ${props => props.color};
+  font-weight: 500;
+  &:hover {
+    color: #3498db;
+    transition: all 0.2s;
+  }
+  @media screen and (min-width: 650px) {
+    display: none;
+  }
+`;
 
-const Header = ({onClick = () => {}}) => (
-  <HeaderContainer>
-    <NewPostButton onClick={onClick}>New Post</NewPostButton>
-    <div>login placeholder</div>
-  </HeaderContainer>
+const Header = ({navItems, onClick = () => {}}) => (
+  <Box>
+    <HeaderContainer>
+      <NewPostButton onClick={onClick}>New Post</NewPostButton>
+      <ProjectTitle to="/" color="black">
+        Readable
+      </ProjectTitle>
+      <div>login placeholder</div>
+    </HeaderContainer>
+    <HeaderTab navItems={navItems} />
+  </Box>
 );
 
 export default Header;
