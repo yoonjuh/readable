@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import HeaderTab from './HeaderTab';
+import HeaderUserThumbnail from './HeaderUserThumbnail';
 
 const Box = styled.div`
   display: flex;
@@ -24,7 +25,8 @@ const NewPostButton = styled.button`
   cursor: pointer;
   background-color: #3a5fcd;
   color: white;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.6rem;
   border-radius: 0.5rem;
   font-weight: 400;
   &:hover {
@@ -57,7 +59,7 @@ const Header = ({navItems, onClick = () => {}}) => (
       <ProjectTitle to="/" color="black">
         Readable
       </ProjectTitle>
-      <div>login placeholder</div>
+      <HeaderUserThumbnail />
     </HeaderContainer>
     <HeaderTab navItems={navItems} />
   </Box>
