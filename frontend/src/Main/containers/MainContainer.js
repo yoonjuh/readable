@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Sidebar from '../../features/sidebar/containers/Sidebar';
 import Header from '../../features/header/Header';
@@ -14,13 +14,13 @@ const BodyContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 1rem;
+  padding: 0rem 2rem;
 `;
 const navItems = [
   {
     name: 'Latest Post',
     icon: 'fas fa-burn',
-    path: 'new',
+    path: 'latest',
   },
   {
     name: 'Trendy Post',
@@ -29,12 +29,12 @@ const navItems = [
   },
 ];
 
-const MainContainer = () => (
+const MainContainer = ({sortBy}) => (
   <MainBox>
     <Sidebar navItems={navItems} />
     <BodyContainer>
       <Header navItems={navItems} />
-      <PostContainer />
+      <PostContainer sortBy={sortBy} />
     </BodyContainer>
   </MainBox>
 );
