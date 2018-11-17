@@ -1,10 +1,27 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
+
+const hoverEffect = keyframes`
+  0% {
+    opacity: 0;
+    transform: translate(-10rem);
+    background-color: #686868;
+  }
+  80% {
+    transform: translate(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+    background-color: black;
+
+  }
+`;
 
 const StyledItem = styled(Link)`
   flex: 1;
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding: 1rem 1rem;
   display: flex;
   justify-content: flex-start;
@@ -13,12 +30,12 @@ const StyledItem = styled(Link)`
   color: white;
   &:hover {
     background-color: black;
-    /* background-color: #e0e0e0; */
-    color: #3498db;
+    color: #e03a72;
     transition: all 0.2s;
+    animation: ${hoverEffect} 0.8s 1;
   }
   &:active {
-    color: #3a5fcd;
+    color: #e03a72;
   }
 `;
 const Icon = styled.i`
@@ -31,6 +48,7 @@ const Icon = styled.i`
   font-size: 3rem;
   padding-bottom: 0.5rem;
   min-width: 2.5rem;
+  fill: #e03a72;
 `;
 const NavItem = ({path, icon, name}) => (
   <StyledItem to={path}>

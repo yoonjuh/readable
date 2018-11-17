@@ -7,10 +7,16 @@ const NaviContainer = styled.div`
   margin-top: 2rem;
 `;
 
-const SidebarNavi = ({navItems}) => (
+const SidebarNavi = ({navItems, onClickHandler}) => (
   <NaviContainer>
     {navItems.map(({name, icon, path}) => (
-      <NavItem key={name} icon={icon} name={name} path={path} />
+      <NavItem
+        key={name}
+        icon={icon}
+        name={name}
+        path={path}
+        onClick={onClickHandler}
+      />
     ))}
   </NaviContainer>
 );
