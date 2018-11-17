@@ -24,6 +24,7 @@ const HeaderTab = ({navItems}) => (
     {navItems &&
       navItems.map(({name, path, icon}) => (
         <StyledLink
+          key={name}
           to={path}
           activeStyle={{color: '#3498db', borderBottom: '.2rem #424949 solid'}}
         >

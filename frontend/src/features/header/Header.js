@@ -44,10 +44,10 @@ const ProjectTitle = styled(Link)`
   color: ${props => props.color};
   font-weight: 500;
   &:hover {
-    color: #3498db;
+    color: #5478e4;
     transition: all 0.2s;
   }
-  @media screen and (min-width: 650px) {
+  @media screen and (min-width: 900px) {
     display: none;
   }
 `;

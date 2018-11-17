@@ -1,14 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import SidebarNavi from '../components/SidebarNavi';
+import SidebarNavi from '../SidebarNavi';
 
 const StyledSidebar = styled.aside`
-  min-width: 17rem;
+  min-width: 25rem;
   display: flex;
   flex-direction: column;
   background-color: #686868;
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 900px) {
     display: none;
   }
 `;
@@ -17,14 +17,14 @@ const StyledLink = styled(Link)`
   display: flex;
   padding: 1.5rem 2.5rem;
   align-items: flex-start;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-family: -apple-system, 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue',
     sans-serif;
   text-decoration: none;
   color: white;
   font-weight: 400;
   &:hover {
-    color: #3498db;
+    color: #5478e4;
     transition: all 0.2s;
   }
 `;

@@ -20,14 +20,14 @@ const Envelope = styled.div`
     width: calc(25% - 2rem);
   }
 
-  @media screen and (max-width: 1250px) {
+  @media screen and (max-width: 1500px) {
     width: calc(33.333% - 2rem);
   }
 
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 1200px) {
     width: calc(50% - 2rem);
   }
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 900px) {
     width: calc(100% - 2rem);
     max-height: 43rem;
   }
@@ -35,7 +35,7 @@ const Envelope = styled.div`
 const Img = styled.img`
   max-width: 100%;
   max-height: 100%;
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 900px) {
     max-height: 140%;
   }
 `;
@@ -94,9 +94,9 @@ const TimeContainer = styled.div`
 `;
 
 const Post = ({
-  post: {id, author, body, category, comments, updatedAt, title, voteScore},
+  post: {id, author, body, category, comments, createdAt, title, voteScore},
 }) => {
-  const dateFormat = new Date(updatedAt);
+  const dateFormat = new Date(createdAt);
   return (
     <Envelope>
       <div style={{display: 'flex', flex: 1, zIndex: 3, position: 'relative'}}>
