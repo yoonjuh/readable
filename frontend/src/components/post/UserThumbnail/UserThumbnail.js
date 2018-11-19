@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import image from '../../img/default-user.png';
+import image from '../../../img/default-user.png';
 
 const Thumbnail = styled.div`
   border-radius: 50%;

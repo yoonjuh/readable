@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import Sidebar from '../../features/sidebar/containers/Sidebar';
-import Header from '../../features/header/Header';
-import PostContainer from '../../features/post/containers/PostContainer';
+import Sidebar from '../sidebar/Sidebar';
+import Header from '../header/Header';
+import PostContainer from '../post/PostContainer';
 
 const MainBox = styled.div`
   min-width: 100%;
@@ -15,6 +15,9 @@ const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0rem 2rem;
+  @media screen and (max-width: 900px) {
+    padding: 0rem;
+  }
 `;
 const navItems = [
   {

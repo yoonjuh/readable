@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 import {Link} from 'react-router-dom';
-import img from '../../img/test2.jpg';
-import UserThumbnail from './UserThumbnail';
+import img from '../../../img/test2.jpg';
+import UserThumbnail from '../UserThumbnail';
 
 const Envelope = styled.div`
   font-size: 2rem;

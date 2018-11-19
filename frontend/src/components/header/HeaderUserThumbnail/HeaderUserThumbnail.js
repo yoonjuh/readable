@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import image from '../../img/default-user.png';
+import image from '../../../img/default-user.png';
 
 const ThumbnailContainer = styled(Link)``;
 const Thumbnail = styled.div`

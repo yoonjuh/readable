@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavItem from './NavItem';
+import NavItem from '../NavItem';
 
 const NaviContainer = styled.div`
   font-size: 1.5rem;

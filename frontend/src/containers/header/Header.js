@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
-import HeaderTab from './HeaderTab';
-import HeaderUserThumbnail from './HeaderUserThumbnail';
+import HeaderTab from '../../components/header/HeaderTab';
+import HeaderUserThumbnail from '../../components/header/HeaderUserThumbnail';
 
 const Box = styled.div`
   display: flex;

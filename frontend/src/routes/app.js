@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import styled from 'styled-components';
-import MainContainer from '../Main/containers/MainContainer';
-import FormContainer from '../features/postForm/containers/FormContainer';
+import MainContainer from '../containers/main/MainContainer';
+import FormContainer from '../containers/post/FormContainer';
 
 const AppContainer = styled.div`
   width: 100%;

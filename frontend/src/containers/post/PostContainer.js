@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {graphql} from 'react-apollo';
 import Loader from 'react-loader-spinner';
-import {GET_ALL_POST} from '../../../documents/query/post';
+import {GET_ALL_POST} from '../../documents/query/post';
 
-import Post from '../Post';
+import Post from '../../components/post/Post';
 
 const PostBox = styled.div`
   flex: 1;

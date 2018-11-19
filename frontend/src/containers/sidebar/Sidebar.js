@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import SidebarNavi from '../SidebarNavi';
+import SidebarNav from '../../components/sidebar/SidebarNav';
 
 const StyledSidebar = styled.aside`
   min-width: 25rem;
@@ -32,7 +32,7 @@ const StyledLink = styled(Link)`
 const Sidebar = ({navItems}) => (
   <StyledSidebar>
     <StyledLink to="/">Readable</StyledLink>
-    <SidebarNavi navItems={navItems} />
+    <SidebarNav navItems={navItems} />
   </StyledSidebar>
 );
 
